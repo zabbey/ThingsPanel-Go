@@ -765,6 +765,7 @@ COMMENT ON COLUMN public.tp_dashboard.sort IS '排序';
 
 -- init sql
 --24小时分区
+CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 SELECT create_hypertable('ts_kv', 'ts',chunk_time_interval => 86400000000);
 
 INSERT INTO "users" ("id", "created_at", "updated_at", "enabled", "additional_info", "authority", "customer_id", "email", "password", "name", "first_name", "last_name", "search_text", "email_verified_at", "remember_token", "mobile", "remark", "is_admin", "business_id", "wx_openid", "wx_unionid") VALUES
