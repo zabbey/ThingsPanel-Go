@@ -126,6 +126,9 @@ func init() {
 		web.NSRouter("business/delete", &controllers.BusinessController{}, "*:Delete"), //yewu-w
 		web.NSRouter("business/tree", &controllers.BusinessController{}, "*:Tree"),
 
+		// 业务和分组查询
+		web.NSRouter("business/asset/tree", &controllers.BusinessController{}, "*:BusinessAssetTree"),
+
 		// 设备新增
 		web.NSRouter("/device/add_only", &controllers.DeviceController{}, "*:AddOnly"),       //shebei-w
 		web.NSRouter("/device/update_only", &controllers.DeviceController{}, "*:UpdateOnly"), //shebei-w
@@ -375,7 +378,8 @@ func init() {
 		//web.NSRouter("/tp_ota_device/add", &controllers.TpOtaDeviceController{}, "*:Add"),
 		web.NSRouter("/tp_ota_device/list", &controllers.TpOtaDeviceController{}, "*:List"),
 		web.NSRouter("/tp_ota_device/modfiyupdate", &controllers.TpOtaDeviceController{}, "*:ModfiyUpdate"),
-
+		//固件下载断点续传
+		web.NSRouter("/ota/download/:date/:path", &controllers.TpOtaDeviceController{}, "get:Download"),
 		//WVP接口
 		web.NSRouter("/wvp/ptz", &controllers.WvpController{}, "*:PtzControl"),
 		web.NSRouter("/gb_record/query", &controllers.WvpController{}, "*:GetVideoList"),
